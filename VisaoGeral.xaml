@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_dailybetes3.Paginas.VisaoGeral"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" xmlns:local="clr-namespace:App_dailybetes3" 
+             >
+    <RelativeLayout Background="white">
+        <!--Título e ícone do menu-->
+        <Grid x:Name="grid_titulo" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Source="btm_menu" Margin="15,35,15,10" WidthRequest="43" Aspect="AspectFill" BackgroundColor="White" Clicked="Abrir_menu"/>
+            <Label Grid.Column="1" Text="VISÃO GERAL" FontSize="21" HorizontalTextAlignment="End" Margin="85,30,20,0" TextColor="#367DC5" FontAttributes="Bold" LineBreakMode="NoWrap"/>
+        </Grid>
+
+        <!--Níveis de glicose-->
+        <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=grid_titulo, Property=Height, Factor=1, Constant=10}">
+            <ScrollView Padding="0,0,0,-60" HeightRequest="715">
+                <StackLayout>
+                    <!--Gráfico-->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton Grid.Column="0" Source="next_button" Clicked="Ultimo_grafico" BackgroundColor="Transparent" Rotation="180" Scale="0.6"/>
+                        <Label x:Name="periodo" Text="Diariamente" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="21" TextColor="#367DC5" TextTransform="Uppercase" LineBreakMode="NoWrap"/>
+                        <ImageButton Grid.Column="2" Source="next_button" Clicked="Proximo_grafico" BackgroundColor="Transparent" Scale="0.6"/>
+                    </Grid>
+                    <Frame x:Name="frame_grafico" BackgroundColor="#DAEFF4" CornerRadius="15" Margin="20,-10,20,20" HeightRequest="200" Padding="10,10,10,15">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <!--<Label Text="300" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>
+                            <Label Text="250" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>
+                            <Label Text="200" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>
+                            <Label Text="100" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>
+                            <Label Text="50" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>-->
+
+                            <forms:ChartView x:Name="grafico1" WidthRequest="360" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" Margin="-50,-25,0,-155" IsVisible="true"/>
+                            <forms:ChartView x:Name="grafico2" WidthRequest="360" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" Margin="-50,-25,0,-155" IsVisible="false"/>
+                            <forms:ChartView x:Name="grafico3" WidthRequest="360" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" Margin="-50,-25,0,-155" IsVisible="false"/>
+
+                            <!--<Label x:Name="label_gr1" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18" Margin="15,0,0,-10"/>
+                            <Label x:Name="label_gr2" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18" Margin="15,0,0,-10"/>
+                            <Label x:Name="label_gr3" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18" Margin="25,0,0,-10"/>
+                            <Label x:Name="label_gr4" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18" Margin="25,0,0,-10"/>
+                            <Label x:Name="label_gr5" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18" Margin="30,0,0,-10"/>
+                            <Label x:Name="label_gr6" Grid.Row="5" Grid.Column="6" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18" Margin="35,0,0,-10"/>-->
+                        </Grid>
+                    </Frame>
+                    <Label Text="NÍVEIS DE GLICOSE NO SANGUE mg/dl"  TextColor="#367DC5" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="End" Margin="0,-10,20,0"/>
+
+                    <StackLayout>
+                        <StackLayout Padding="0,0,0,100">
+                            <!--Agenda-->
+                            <Frame BackgroundColor="#9ABEE2" CornerRadius="15" Margin="20,10,20,10" Padding="24,24,24,10">
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Text="AGENDA" FontSize="16" TextColor="#023170" FontAttributes="Bold" Margin="-10,-10,0,0"/>
+                                        <ImageButton Grid.Row="0" Grid.Column="1" Source="btm_adicionar_tarefa" Margin="120,0,5,0" BackgroundColor="Transparent" Clicked="Nv_agenda"/>
+                                    </Grid>
+                                    <Label x:Name="lb_data" Text="Hoje" FontSize="13" Margin="-10,-25,100,0" TextColor="White"/>
+
+                                    <StackLayout x:Name="stack_carousel1" HeightRequest="130">
+                                        <CarouselView x:Name="Carousel1" HorizontalOptions="Center" PeekAreaInsets="0" HorizontalScrollBarVisibility="Default" IndicatorView="indicatorView">
+                                            <CarouselView.ItemsLayout>
+                                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="0" SnapPointsAlignment="Start" SnapPointsType="MandatorySingle"/>
+                                            </CarouselView.ItemsLayout>
+                                            <CarouselView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout>
+                                                        <Frame HeightRequest="90" BackgroundColor="#4D84C7" CornerRadius="20" Margin="0,10,0,10" HasShadow="False">
+                                                            <StackLayout>
+                                                                <Label Text="{Binding Tarefa2}" TextColor="White" FontSize="17"/>
+                                                                <Label Text="{Binding Hora2}" TextColor="White" FontSize="17"/>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </CarouselView.ItemTemplate>
+                                        </CarouselView>
+                                        <IndicatorView x:Name="indicatorView" IndicatorColor="LightGray" SelectedIndicatorColor="DarkGray" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+
+                            <!--Refeições-->
+                            <Frame BackgroundColor="#9ABEE2" CornerRadius="15" Margin="20,10,20,10" Padding="24,24,24,10">
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Text="REFEIÇÕES" FontSize="16" TextColor="#023170" FontAttributes="Bold" Margin="-10,-10,0,0"/>
+                                        <ImageButton Grid.Row="0" Grid.Column="1" Source="btm_adicionar_tarefa" Margin="120,0,5,0" Clicked="Nv_refeicoes" BackgroundColor="Transparent"/>
+                                    </Grid>
+                                    <Label x:Name="lb_hora" Text="Hoje" FontSize="13" Margin="-10,-25,100,0" TextColor="White"/>
+
+                                    <StackLayout x:Name="stack_carousel2" HeightRequest="130">
+                                        <CarouselView x:Name="Carousel2" HorizontalOptions="Center" PeekAreaInsets="0" HorizontalScrollBarVisibility="Default" IndicatorView="indicatorView2">
+                                            <CarouselView.ItemsLayout>
+                                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="0" SnapPointsAlignment="Start" SnapPointsType="MandatorySingle"/>
+                                            </CarouselView.ItemsLayout>
+                                            <CarouselView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout>
+                                                        <Frame HeightRequest="90" BackgroundColor="#4D84C7" CornerRadius="20" Margin="0,10,0,10">
+                                                            <StackLayout>
+                                                                <Label Text="{Binding hora_ref}" TextColor="White" FontSize="17"/>
+                                                                <Label Text="{Binding descricao}" TextColor="White" FontSize="17"/>
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </CarouselView.ItemTemplate>
+                                        </CarouselView>
+                                        <IndicatorView x:Name="indicatorView2" IndicatorColor="LightGray" SelectedIndicatorColor="DarkGray" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+        <!--TabbedPage-->
+        <StackLayout BackgroundColor="White" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-90}">
+            <Grid Margin="0,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="#d4ecfa" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_home" Clicked="Tb_visaogeral" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_agenda" Clicked="Tb_calendario" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="2" Scale="1.2" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_sintomas" Clicked="Tb_notas" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="3" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_glicemia" Clicked="Tb_glicemia" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="4" Scale="1.0" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_conteudo" Clicked="Tb_conteudo" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+
+        <BoxView BackgroundColor="#292929" Opacity="0.7" x:Name="coverLayout" IsVisible="false" VerticalOptions="FillAndExpand"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+             RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Fechar_menu" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!--Menu-->
+        <Grid BackgroundColor="White" Padding="27,0,37,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout x:Name="frame_menu" IsVisible="false" BackgroundColor="White" Grid.Column="0" Grid.Row="0" Grid.RowSpan="1" 
+             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+             RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+             RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+                <Label Text="dailybetes" TextColor="#367DC5" FontSize="30" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_visao_geral" Text="Visão geral" HorizontalOptions="StartAndExpand" Clicked="Btn_VisaoGeral"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_agenda" Text="Agenda" HorizontalOptions="StartAndExpand" Clicked="Btn_Agenda"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_glicemia" Text="Glicemia" HorizontalOptions="StartAndExpand" Clicked="Btn_Glicemia"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_conteudo" Text="Conteúdo" HorizontalOptions="StartAndExpand" Clicked="Btn_Conteudo"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_refeicoes" Text="Refeições" HorizontalOptions="StartAndExpand" Clicked="Btn_Refeicoes"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_uploads_menu" Text="Uploads" HorizontalOptions="StartAndExpand" Clicked="Btn_Uploads"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_notas" Text="Sintomas" HorizontalOptions="StartAndExpand" Clicked="Btn_Sintomas"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_insulina" Text="Insulina" HorizontalOptions="StartAndExpand" Clicked="Btn_Insulina"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_ajuda" Text="Ajuda e feedback" HorizontalOptions="StartAndExpand" Clicked="Btn_AjudaEFeedback"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_perfil" Text="Perfil" HorizontalOptions="StartAndExpand" Clicked="Btn_Perfil"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_logoff" Text="Sair" HorizontalOptions="StartAndExpand" Clicked="Btn_sair"/>
+            </StackLayout>
+        </Grid>
+    </RelativeLayout>
+</ContentPage>
+
+
+
+<!--Frame BackgroundColor="#DAEFF4" CornerRadius="15" Margin="20,0,20,10" HeightRequest="180" Padding="10,15,10,0">                             -->
+<!--    <Grid>                                                                                                                                  -->
+<!--        <Grid.RowDefinitions>                                                                                                               -->
+<!--            <RowDefinition Height="*"/>                                                                                                     -->
+<!--            <RowDefinition Height="*"/>                                                                                                     -->
+<!--            <RowDefinition Height="*"/>                                                                                                     -->
+<!--            <RowDefinition Height="*"/>                                                                                                     -->
+<!--            <RowDefinition Height="*"/>                                                                                                     -->
+<!--        </Grid.RowDefinitions>                                                                                                              -->
+<!--        <Grid.ColumnDefinitions>                                                                                                            -->
+<!--            <ColumnDefinition Width="auto"/>                                                                                                -->
+<!--            <ColumnDefinition Width="auto"/>                                                                                                -->
+<!--        </Grid.ColumnDefinitions>                                                                                                           -->
+<!--        <Label Text="500" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>                                 -->
+<!--        <Label Text="300" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>                                 -->
+<!--        <Label Text="150" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>                                 -->
+<!--        <Label Text="50" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>                                  -->
+<!--        <Label Text="30" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" TextColor="Gray" FontSize="18"/>                                  -->
+<!--        <forms:ChartView x:Name="Grafico" HeightRequest="130" WidthRequest="330" Grid.Row="1" Grid.Column="1" Margin="30,-30,0,-85"/>       -->
+<!--    </Grid>                                                                                                                                 -->
+<!--    </Frame>                                                                                                                                -->

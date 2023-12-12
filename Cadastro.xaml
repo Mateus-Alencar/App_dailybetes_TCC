@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImageSource="background.png"
+             x:Class="App_dailybetes3.Paginas.Cadastro">
+    <StackLayout>
+        <Button Margin="10,40,0,0" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="Start" ImageSource="botao_voltar" Clicked="Btm_voltar_login"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" HeightRequest="135" BackgroundColor="Transparent" HasShadow="False"/>
+            <Frame Grid.Row="3" BackgroundColor="Transparent" HasShadow="False" Padding="0" Margin="45,25,0,0">
+                <Label Text="Crie sua conta" FontSize="18" TextColor="#545454" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+            </Frame>
+            <Frame Grid.Row="4" CornerRadius="12" BorderColor="#737373" HasShadow="True" Padding="0" Margin="45,20,45,0">
+                <Entry x:Name="entry_nome_cadastrar" Placeholder="Email" PlaceholderColor="Gray" TextColor="Black" ClearButtonVisibility="WhileEditing" Keyboard="Email" Margin="10,0,0,0"/>
+            </Frame>
+            <Frame Grid.Row="5" CornerRadius="12" BorderColor="#737373" HasShadow="True" Padding="0" Margin="45,40,45,0">
+                <Entry x:Name="entry_senha_cadastrar" Placeholder="Senha" PlaceholderColor="Gray" TextColor="Black" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" IsPassword="True" Margin="10,0,0,0"/>
+            </Frame>
+            <Frame Grid.Row="6" CornerRadius="12" BorderColor="#737373" HasShadow="True" Padding="0" Margin="45,40,45,0">
+                <Entry x:Name="entry_senha_confirm" Placeholder="Confirmar senha" PlaceholderColor="Gray" TextColor="Black" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" IsPassword="True" Margin="10,0,0,0"/>
+            </Frame>
+        </Grid>
+        <Button x:Name="botao" Margin="45,40,45,30" CornerRadius="12" Text="CRIAR" FontSize="19" TextColor="White" FontAttributes="Bold" Background="#367DC5" Clicked="Btm_cadastrar_usuario"/>
+    </StackLayout>
+</ContentPage>

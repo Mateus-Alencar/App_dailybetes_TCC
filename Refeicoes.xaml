@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:App_dailybetes3"
+             x:Class="App_dailybetes3.Paginas.Refeicoes">
+    <RelativeLayout Background="White">
+        <!--Título e ícone do menu-->
+        <Grid x:Name="grid_titulo" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Source="btm_menu" Margin="15,35,15,10" WidthRequest="43" Aspect="AspectFill" BackgroundColor="White" Clicked="Abrir_menu"/>
+            <Label Grid.Column="1" Text="REFEIÇÕES" FontSize="21" HorizontalTextAlignment="End" Margin="85,30,20,0" TextColor="#367DC5" FontAttributes="Bold" LineBreakMode="NoWrap"/>
+        </Grid>
+
+        <!--Refeições-->
+        <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=grid_titulo, Property=Height, Factor=1, Constant=10}">
+            <Label Text="HOJE" HorizontalOptions="Center" TextColor="#367DC5" FontAttributes="Bold" FontSize="20"/>
+            <ScrollView HeightRequest="610">
+                <StackLayout Margin="20,0,20,0">
+                    <!--Café da manhã-->
+                    <Frame CornerRadius="15" BackgroundColor="#9ABEE2" Margin="0,20,0,0">
+                        <StackLayout>
+                            <Label Text="CAFÉ DA MANHÃ"  TextColor="#023170" FontSize="15" FontAttributes="Bold"/>
+                            <Frame CornerRadius="15" BackgroundColor="#367DC5" Padding="10,5,10,5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Row="0" Grid.Column="0" x:Name="cf" Text="Adicionar refeição" FontSize="13" TextColor="white" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Clicked="Primeira_refeicao"/>
+                                    <Label Grid.Row="0" Grid.Column="1"  Text="Horário: 8h" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" TextColor="White"/>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <!--Lanche-->
+                    <Frame CornerRadius="15" BackgroundColor="#9ABEE2" Margin="0,20,0,0">
+                        <StackLayout>
+                            <Label Text="LANCHE"  TextColor="#023170" FontSize="15" FontAttributes="Bold"/>
+                            <Frame CornerRadius="15" BackgroundColor="#4d84c7" Padding="10,5,10,5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Row="0" Grid.Column="0" x:Name="lanche" Text="Adicionar refeição" FontSize="13" TextColor="white" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Clicked="Segunda_refeicao"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Horário: 10h" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" TextColor="White"/>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <!--Almoço-->
+                    <Frame CornerRadius="15" BackgroundColor="#9ABEE2" Margin="0,20,0,0">
+                        <StackLayout>
+                            <Label Text="ALMOÇO"  TextColor="#023170" FontSize="15" FontAttributes="Bold"/>
+                            <Frame CornerRadius="15" BackgroundColor="#4d84c7" Padding="10,5,10,5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Row="0" Grid.Column="0" x:Name="almoco" Text="Adicionar refeição" FontSize="13" TextColor="white" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Start" Clicked="Terceira_refeicao"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Horário: 11:30" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" TextColor="White"/>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <!--Café da tarde-->
+                    <Frame CornerRadius="15" BackgroundColor="#9ABEE2" Margin="0,20,0,0">
+                        <StackLayout>
+                            <Label Text="CAFÉ DA TARDE"  TextColor="#023170" FontAttributes="Bold" FontSize="15"/>
+                            <Frame CornerRadius="15" BackgroundColor="#4d84c7" Padding="10,5,10,5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Row="0" Grid.Column="0" x:Name="ct" Text="Adicionar refeição" FontSize="13" TextColor="white" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Clicked="Quarta_refeicao"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Horário: 16:30" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" TextColor="White"/>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <!--Jantar-->
+                    <Frame CornerRadius="15" BackgroundColor="#9ABEE2" Margin="0,20,0,20">
+                        <StackLayout>
+                            <Label Text="JANTAR"  TextColor="#023170" FontAttributes="Bold" FontSize="15"/>
+                            <Frame CornerRadius="15" BackgroundColor="#4d84c7" Padding="10,5,10,5">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Row="0" Grid.Column="0" x:Name="jantar" Text="Adicionar refeição" FontSize="13" TextColor="white" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" Clicked="Quinta_refeicao"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="Horário: 20h" FontSize="14" HorizontalOptions="End" VerticalOptions="Center" TextColor="White"/>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+        <!--TabbedPage-->
+        <StackLayout BackgroundColor="White" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                  RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-90}">
+            <Grid Margin="0,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_home" Clicked="Tb_visaogeral" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_agenda" Clicked="Tb_calendario" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="2" Scale="1.2" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_sintomas" Clicked="Tb_notas" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="3" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_glicemia" Clicked="Tb_glicemia" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="4" Scale="1.1" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_conteudo" Clicked="Tb_conteudo" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+
+        <BoxView BackgroundColor="#292929" Opacity="0.7" x:Name="coverLayout" IsVisible="false" VerticalOptions="FillAndExpand"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+             RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Fechar_menu" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!--Menu-->
+        <Grid BackgroundColor="White" Padding="27,0,37,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout x:Name="frame_menu" IsVisible="false" BackgroundColor="White" Grid.Column="0" Grid.Row="0" Grid.RowSpan="1" 
+             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+             RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+             RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+                <Label Text="dailybetes" TextColor="#367DC5" FontSize="30" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_visao_geral" Text="Visão geral" HorizontalOptions="StartAndExpand" Clicked="Btn_VisaoGeral"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_agenda" Text="Agenda" HorizontalOptions="StartAndExpand" Clicked="Btn_Agenda"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_glicemia" Text="Glicemia" HorizontalOptions="StartAndExpand" Clicked="Btn_Glicemia"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_conteudo" Text="Conteúdo" HorizontalOptions="StartAndExpand" Clicked="Btn_Conteudo"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_refeicoes" Text="Refeições" HorizontalOptions="StartAndExpand" Clicked="Btn_Refeicoes"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_uploads_menu" Text="Uploads" HorizontalOptions="StartAndExpand" Clicked="Btn_Uploads"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_notas" Text="Sintomas" HorizontalOptions="StartAndExpand" Clicked="Btn_Sintomas"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_insulina" Text="Insulina" HorizontalOptions="StartAndExpand" Clicked="Btn_Insulina"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_ajuda" Text="Ajuda e feedback" HorizontalOptions="StartAndExpand" Clicked="Btn_AjudaEFeedback"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_perfil" Text="Perfil" HorizontalOptions="StartAndExpand" Clicked="Btn_Perfil"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_logoff" Text="Sair" HorizontalOptions="StartAndExpand" Clicked="Btn_sair"/>
+            </StackLayout>
+        </Grid>
+
+        <BoxView BackgroundColor="#292929" Opacity="0.7" x:Name="coverLayout2" IsVisible="false"
+                 RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                 RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+                 RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Fechar_frame_refeicao" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!--Frame Refeição-->
+        <Frame x:Name="frame_refeicao" IsVisible="false" CornerRadius="12" BorderColor="#737373" HasShadow="False"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.9}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=Constant, Constant=180}"
+            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.05}"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.35}">
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" Text="Adicionar" TextTransform="Uppercase" TextColor="#023170" FontSize="17" FontAttributes="Bold"/>
+                    <Label Grid.Column="1" Grid.Row="0" x:Name="horario_refeicao" Text="{Binding horario}" HorizontalTextAlignment="End" TextTransform="Uppercase" TextColor="#023170" FontSize="17" FontAttributes="Bold" Margin="0,0,10,0"/>
+                </Grid>
+                <Frame Padding="0" BackgroundColor="#9abee2" CornerRadius="10">
+                    <Entry x:Name="entry_refeicao" Placeholder="Refeição" TextColor="Black" PlaceholderColor="#023170" ClearButtonVisibility="WhileEditing" Keyboard="Email" Margin="10,0,10,0"/>
+                </Frame>
+                <ImageButton Source="botao_enviar" BackgroundColor="#367dc5" HorizontalOptions="End" CornerRadius="50" Padding="5" Margin="0,5,0,0" Clicked="Salvar_refeicao"/>
+            </StackLayout>
+        </Frame>
+    </RelativeLayout>
+</ContentPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImageSource="background.png"
+             x:Class="App_dailybetes3.Paginas.Login">
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Frame HeightRequest="230" BackgroundColor="Transparent" HasShadow="False"/>
+            <Frame Grid.Row="3" BackgroundColor="Transparent" HasShadow="False" Padding="0" Margin="45,25,45,0">
+                <Label Text="Entre na sua conta" FontSize="18" TextColor="#545454"/>
+            </Frame>
+            <Frame Grid.Row="4" CornerRadius="12" BorderColor="#737373" HasShadow="True" Padding="0" Margin="45,20,45,0">
+                <Entry x:Name="entry_nome" Placeholder="Email" TextColor="Black" PlaceholderColor="Gray" ClearButtonVisibility="WhileEditing" Keyboard="Email" Margin="10,0,10,0"/>
+            </Frame>
+            <Frame Grid.Row="5" CornerRadius="12" BorderColor="Gray" HasShadow="True" Padding="0" Margin="45,43,45,10">
+                <Entry x:Name="entry_senha" Placeholder="Senha" TextColor="Black" PlaceholderColor="Gray" ClearButtonVisibility="WhileEditing" Keyboard="Numeric" Margin="10,0,10,0" IsPassword="True"/>
+            </Frame>
+            <Button Grid.Row="6" x:Name="botao_entrar" CornerRadius="12" Text="ENTRAR" FontSize="19" TextColor="White" FontAttributes="Bold" Margin="45,28,45,28" Background="#367DC5" Clicked="Btm_entrar"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Text="Não tem uma conta?" TextColor="#545454" FontSize="16" LineBreakMode="NoWrap" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+            <Button Grid.Column="1" Text="Cadastre-se" Background="Transparent" TextColor="#545454" FontAttributes="Bold" HorizontalOptions="Start" FontSize="17" VerticalOptions="Center" Margin="-15,0,20,0" TextTransform="None" Clicked="Btn_tela_cadastro"/>
+        </Grid>
+        <Label x:Name="msg_erro" HorizontalTextAlignment="Center" TextColor="Red" IsVisible="False"/>
+    </StackLayout>
+</ContentPage>

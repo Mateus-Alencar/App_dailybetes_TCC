@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_dailybetes3.Paginas.Relatorio_insulina">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <StackLayout>
+                <Button Text="Gerar relatório PDF" VerticalOptions="Center" Clicked="GeneratePDFButton_Clicked"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="DATA" TextColor="Black" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    <Label Grid.Row="0" Grid.Column="2" Text="Nivel Insulina" TextColor="Black" FontSize="16" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </Grid>
+            </StackLayout>
+            <StackLayout Margin="0,0,0,0" VerticalOptions="Center" BackgroundColor="White" HeightRequest="800" WidthRequest="380" HorizontalOptions="Center">
+                <CollectionView x:Name="CVLista" Margin="10" HorizontalOptions="CenterAndExpand" ItemsSource="{Binding Obj_relatorio_insulina}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Margin="10">
+                                <Frame Padding="0" BorderColor="Black" HasShadow="False" CornerRadius="0">
+                                    <Grid Margin="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding data}" TextColor="Black" FontSize="16" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                                        
+                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding nivel_insulina}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    </Grid>
+
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

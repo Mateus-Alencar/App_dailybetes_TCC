@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:App_dailybetes3"
+             x:Class="App_dailybetes3.Paginas.Configuracoes">
+    <RelativeLayout Background="white">
+        <!--Título e ícone do menu-->
+        <Grid x:Name="grid_titulo" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Source="btm_menu" Margin="15,35,15,10" WidthRequest="43" Aspect="AspectFill" BackgroundColor="White" Clicked="Abrir_menu"/>
+            <Label Grid.Column="1" Text="PERFIL" FontSize="21" HorizontalTextAlignment="End" Margin="85,30,20,0" TextColor="#367DC5" FontAttributes="Bold" LineBreakMode="NoWrap"/>
+        </Grid>
+
+        <!--Perfil-->
+        <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+             RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=grid_titulo, Property=Height, Factor=1, Constant=10}">
+            <Frame HasShadow="False">
+                <StackLayout HorizontalOptions="Center">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Frame Grid.Row="0" HeightRequest="150" WidthRequest="100" CornerRadius="20" Margin="75,0,75,0">
+                            <Frame.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="#367dc5" Offset="0.2" />
+                                    <GradientStop Color="#57abb6" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Frame.Background>
+                            <Image Grid.Row="0" Source="mascote" Aspect="AspectFit"/>
+                        </Frame>
+                        <Label Grid.Row="1" x:Name="label_nome" TextColor="#004AAD" FontSize="18" HorizontalTextAlignment="Center" Margin="0,10,0,0" TextTransform="Uppercase"/>
+                        <Label Grid.Row="2" Text="RELATÓRIOS" TextColor="#004AAD" FontSize="20" HorizontalTextAlignment="Center" TextTransform="Uppercase" Margin="0,25,0,0" FontAttributes="Bold"/>
+                        <Button Grid.Row="3" Text="Glicemia" BackgroundColor="#367DC5" Margin="55,15,55,0" FontSize="16" CornerRadius="10" Clicked="Gerar_pdf_glicemia"/>
+                        <Button Grid.Row="4" Text="Refeições" BackgroundColor="#367DC5" Margin="55,15,55,0" FontSize="16" CornerRadius="10" Clicked="Gerar_pdf_refeicoes"/>
+                        <Button Grid.Row="5" Text="Insulina" BackgroundColor="#367DC5" Margin="55,15,55,0" FontSize="16" CornerRadius="10" Clicked="Gerar_pdf_insulina"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+        <!--TabbedPage-->
+        <StackLayout BackgroundColor="White" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-90}">
+            <Grid Margin="0,15,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_home" Clicked="Tb_visaogeral" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_agenda" Clicked="Tb_calendario" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="2" Scale="1.2" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_sintomas" Clicked="Tb_sintomas" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="3" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_glicemia" Clicked="Tb_glicemia" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="4" Scale="1.1" BackgroundColor="Transparent" CornerRadius="20" Padding="0" HasShadow="False">
+                    <ImageButton Source="icon_conteudo" Clicked="Tb_conteudo" BackgroundColor="Transparent" Aspect="AspectFit"/>
+                </Frame>
+            </Grid>
+        </StackLayout>
+
+        <BoxView BackgroundColor="#292929" Opacity="0.7" x:Name="coverLayout" IsVisible="false" VerticalOptions="FillAndExpand"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+        RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Fechar_menu" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!--Menu-->
+        <Grid BackgroundColor="White" Padding="27,0,37,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout x:Name="frame_menu" IsVisible="false" BackgroundColor="White" Grid.Column="0" Grid.Row="0" Grid.RowSpan="1" 
+             RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+             RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+             RelativeLayout.YConstraint="{ConstraintExpression Type=Constant, Constant=0}">
+                <Label Text="dailybetes" TextColor="#367DC5" FontSize="30" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_visao_geral" Text="Visão geral" HorizontalOptions="StartAndExpand" Clicked="Btn_VisaoGeral"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_agenda" Text="Agenda" HorizontalOptions="StartAndExpand" Clicked="Btn_Agenda"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_glicemia" Text="Glicemia" HorizontalOptions="StartAndExpand" Clicked="Btn_Glicemia"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_conteudo" Text="Conteúdo" HorizontalOptions="StartAndExpand" Clicked="Btn_Conteudo"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_refeicoes" Text="Refeições" HorizontalOptions="StartAndExpand" Clicked="Btn_Refeicoes"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_uploads_menu" Text="Uploads" HorizontalOptions="StartAndExpand" Clicked="Btn_Uploads"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_notas" Text="Sintomas" HorizontalOptions="StartAndExpand" Clicked="Btn_Sintomas"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_insulina" Text="Insulina" HorizontalOptions="StartAndExpand" Clicked="Btn_Insulina"/>
+                <Line Stroke="gray" X2="160" HorizontalOptions="FillAndExpand"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_ajuda" Text="Ajuda e feedback" HorizontalOptions="StartAndExpand" Clicked="Btn_AjudaEFeedback"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_perfil" Text="Perfil" HorizontalOptions="StartAndExpand" Clicked="Btn_Perfil"/>
+                <local:CustomButton BackgroundColor="White" FontSize="16" TextColor="#545454" ImageSource="botao_logoff" Text="Sair" HorizontalOptions="StartAndExpand" Clicked="Btn_sair"/>
+            </StackLayout>
+        </Grid>
+    </RelativeLayout>
+</ContentPage>
